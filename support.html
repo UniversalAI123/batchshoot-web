@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Self-contained on purpose: no scripts, no external files, no fonts to fetch.
+      The policy below allows nothing except this page's own <style> and the data: icon.
+      Keep it in step with mobile/appstore/privacy/APP-PRIVACY.md, mobile/ios/App/App/PrivacyInfo.xcprivacy
+      and the network inventory there: every destination the iOS app can contact must be named on this page.
+      No company name appears on this page on purpose (the publisher is not confirmed yet).
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1012" media="(prefers-color-scheme: dark)" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="BatchShoot support: what the app does, its limits on iPhone, answers to common questions, and how to contact us."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%2315171b'/%3E%3Crect%20x='8'%20y='8.5'%20width='10'%20height='4'%20rx='2'%20fill='%23fff'/%3E%3Crect%20x='8'%20y='14'%20width='14'%20height='4'%20rx='2'%20fill='%23fff'/%3E%3Crect%20x='8'%20y='19.5'%20width='16'%20height='4'%20rx='2'%20fill='%23fff'/%3E%3Ccircle%20cx='22.5'%20cy='10.5'%20r='2.75'%20fill='%23e5484d'/%3E%3C/svg%3E"
+    />
+    <title>BatchShoot support</title>
+    <style>
+      /* BatchShoot tokens, from app/globals.css (warm paper, ink-black actions, one red record dot kept for the mark).
+         The app itself is light only; these pages also follow the reader's dark setting. */
+      :root {
+        color-scheme: light;
+        --bg: #f6f5f2;
+        --surface: #ffffff;
+        --sunken: #f1efeb;
+        --line: #e5e2dc;
+        --line-strong: #d6d2ca;
+        --ink: #15171b;
+        --ink-2: #454a53;
+        --ink-3: #5b616b;
+        --link: #15171b;
+        --focus: #15171b;
+        --rec: #e5484d;
+        --logo-bg: #15171b;
+        --logo-ink: #ffffff;
+        --shadow: 0 1px 2px rgba(21, 23, 27, 0.04), 0 1px 1px rgba(21, 23, 27, 0.03);
+        --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          color-scheme: dark;
+          --bg: #0f1012;
+          --surface: #17191c;
+          --sunken: #1e2024;
+          --line: #2b2e33;
+          --line-strong: #3a3e45;
+          --ink: #f3f2ef;
+          --ink-2: #c4c7cd;
+          --ink-3: #a3a8b0;
+          --link: #f3f2ef;
+          --focus: #f3f2ef;
+          --logo-bg: #f3f2ef;
+          --logo-ink: #15171b;
+          --shadow: none;
+        }
+      }
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+        --bg: #0f1012;
+        --surface: #17191c;
+        --sunken: #1e2024;
+        --line: #2b2e33;
+        --line-strong: #3a3e45;
+        --ink: #f3f2ef;
+        --ink-2: #c4c7cd;
+        --ink-3: #a3a8b0;
+        --link: #f3f2ef;
+        --focus: #f3f2ef;
+        --logo-bg: #f3f2ef;
+        --logo-ink: #15171b;
+        --shadow: none;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--bg);
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+      }
+      a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+      a:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+      .skip {
+        position: absolute;
+        left: 16px;
+        top: -100px;
+        background: var(--surface);
+        color: var(--ink);
+        padding: 10px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        z-index: 10;
+      }
+      .skip:focus {
+        top: 12px;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      .site-header {
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .site-header .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px 16px;
+        min-height: 60px;
+        padding-top: env(safe-area-inset-top);
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        letter-spacing: -0.02em;
+      }
+      .logo__tile {
+        fill: var(--logo-bg);
+      }
+      .logo__bar {
+        fill: var(--logo-ink);
+      }
+      .logo__dot {
+        fill: var(--rec);
+      }
+      .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 4px;
+      }
+      .site-nav a,
+      .site-footer a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 10px;
+        border-radius: 8px;
+      }
+      .site-nav a[aria-current='page'] {
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: inset 0 -2px 0 var(--ink);
+        border-radius: 0;
+      }
+      main {
+        padding-top: 28px;
+        padding-bottom: 40px;
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 30px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        font-weight: 650;
+      }
+      .lede {
+        margin: 0 0 24px;
+        font-size: 18px;
+        color: var(--ink-2);
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 20px;
+        margin: 0 0 16px;
+      }
+      .card--accent {
+        border-left: 3px solid var(--ink);
+      }
+      h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        font-weight: 650;
+      }
+      h3 {
+        margin: 18px 0 6px;
+        font-size: 16px;
+        line-height: 1.3;
+        font-weight: 650;
+      }
+      p,
+      ul,
+      ol,
+      dl {
+        margin: 0 0 12px;
+      }
+      .card > :last-child {
+        margin-bottom: 0;
+      }
+      ul,
+      ol {
+        padding-left: 1.25em;
+      }
+      li + li {
+        margin-top: 6px;
+      }
+      .muted {
+        color: var(--ink-2);
+      }
+      .small {
+        font-size: 14px;
+      }
+      .mono {
+        font-family: var(--font-mono);
+        font-size: 0.92em;
+      }
+      .flows {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .flow {
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      .flow:first-child {
+        border-top: 0;
+        padding-top: 4px;
+      }
+      .flow:last-child {
+        padding-bottom: 0;
+      }
+      .flow__name {
+        margin: 0 0 6px;
+        font-weight: 650;
+      }
+      .flow__row {
+        display: grid;
+        grid-template-columns: 4.5em 1fr;
+        gap: 2px 10px;
+        margin: 0;
+      }
+      .flow__row + .flow__row {
+        margin-top: 4px;
+      }
+      .caption {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        padding-top: 0.3em;
+      }
+      .facts {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+      }
+      .facts li {
+        margin: 0;
+        background: var(--sunken);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 600;
+      }
+      .facts li::before {
+        content: '\2713\00a0';
+        color: var(--ink-2);
+      }
+      .site-footer {
+        border-top: 1px solid var(--line);
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+      }
+      .site-footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 8px;
+        padding-top: 12px;
+      }
+      .site-footer p {
+        margin: 0 10px 0 0;
+        color: var(--ink-3);
+        font-size: 14px;
+      }
+      @media (max-width: 520px) {
+        h1 {
+          font-size: 24px;
+        }
+        .lede {
+          font-size: 17px;
+        }
+        .card {
+          padding: 16px;
+        }
+        .flow__row {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media print {
+        .site-header,
+        .site-footer,
+        .skip {
+          display: none;
+        }
+        .card {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+      }
+      .steps {
+        counter-reset: step;
+        list-style: none;
+        padding: 0;
+      }
+      .steps li {
+        counter-increment: step;
+        display: grid;
+        grid-template-columns: 2em 1fr;
+        gap: 0 8px;
+      }
+      .steps li::before {
+        content: counter(step, decimal-leading-zero);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--ink-3);
+        padding-top: 0.25em;
+      }
+      .limits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+        margin: 0 0 12px;
+      }
+      .limits div {
+        background: var(--sunken);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+      .limits dt {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .limits dd {
+        margin: 2px 0 0;
+        font-weight: 650;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the answers</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="support.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false">
+            <rect class="logo__tile" width="32" height="32" rx="8" />
+            <rect class="logo__bar" x="8" y="8.5" width="10" height="4" rx="2" />
+            <rect class="logo__bar" x="8" y="14" width="14" height="4" rx="2" />
+            <rect class="logo__bar" x="8" y="19.5" width="16" height="4" rx="2" />
+            <circle class="logo__dot" cx="22.5" cy="10.5" r="2.75" />
+          </svg>
+          <span>BatchShoot</span>
+        </a>
+        <nav class="site-nav" aria-label="BatchShoot help pages">
+          <a href="support.html" aria-current="page">Support</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <p class="eyebrow">Support · BatchShoot for iPhone</p>
+      <h1>How can we help?</h1>
+      <p class="lede">What BatchShoot does, what it can handle on an iPhone, answers to common questions, and how to reach us.</p>
+
+      <section class="card card--accent" aria-labelledby="contact">
+        <h2 id="contact">Contact us</h2>
+        <p>
+          Email <a href="mailto:contact@universalaillc.com?subject=BatchShoot%20support">contact@universalaillc.com</a>. Please include your iPhone model, your
+          iOS version, the length and size of the recording, and what you tapped just before the problem.
+        </p>
+        <p class="muted small">
+          Please don't attach your videos unless we ask. A screenshot of the message BatchShoot showed is usually enough.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="what">
+        <h2 id="what">What BatchShoot does</h2>
+        <p>
+          BatchShoot turns a batch of raw product recordings into short, captioned videos. Everything happens on your iPhone: no account, and nothing is
+          uploaded.
+        </p>
+        <ol class="steps">
+          <li><span><strong>Add recordings.</strong> Choose them from Photos or Files, record them in the app, or tap "Try a 15-second demo clip".</span></li>
+          <li>
+            <span
+              ><strong>Set your direction.</strong> One goal for the batch (tighten a take, a product demo, a buyer question answer, a short pitch, or captions
+              with nothing cut) and one caption style.</span
+            >
+          </li>
+          <li>
+            <span
+              ><strong>Generate edits.</strong> BatchShoot listens to each recording on your iPhone, writes the captions and proposes an edit that cuts pauses
+              and likely restarts.</span
+            >
+          </li>
+          <li>
+            <span
+              ><strong>Review.</strong> Tap a sentence to cut it or bring it back, fix a caption, and read the notes on lines worth checking before you
+              post.</span
+            >
+          </li>
+          <li>
+            <span
+              ><strong>Export MP4, then Save.</strong> The video goes to BatchShoot's Exports folder and the share sheet opens, so you can save it to
+              Photos or send it on.</span
+            >
+          </li>
+        </ol>
+        <p class="muted small">
+          BatchShoot edits by what was said. It doesn't judge the picture, and every edit is yours to review before you export.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="limits">
+        <h2 id="limits">What it can handle on iPhone</h2>
+        <dl class="limits">
+          <div><dt>Each recording</dt><dd>Up to 3 minutes</dd></div>
+          <div><dt>File size</dt><dd>Up to 300 MB</dd></div>
+          <div><dt>Picture</dt><dd>Up to 1080p</dd></div>
+          <div><dt>Each export</dt><dd>Up to 1 minute</dd></div>
+          <div><dt>Speech</dt><dd>English</dd></div>
+          <div><dt>Formats</dt><dd>MP4, MOV, WebM</dd></div>
+        </dl>
+        <p>
+          A batch holds up to 20 recordings. These limits keep an export inside what an iPhone's memory can hold. If a recording is over a limit, BatchShoot
+          says which one before any work starts.
+        </p>
+        <h3>My recording is too long or too big</h3>
+        <p>Trim it first, for example in Photos › Edit, then choose the trimmed copy.</p>
+        <h3>My recording is 4K</h3>
+        <p>BatchShoot on iPhone edits up to 1080p. Use a 1080p copy, or set Settings › Camera › Record Video to 1080p before you film.</p>
+      </section>
+
+      <section class="card" aria-labelledby="faq">
+        <h2 id="faq">Common questions</h2>
+        <h3>Do I need an account?</h3>
+        <p>No. There's no sign-in. Open the app and add a recording, or try the demo clip.</p>
+
+        <h3>Why does the first listen need the internet?</h3>
+        <p>
+          The first time BatchShoot listens to one of your recordings, it downloads its speech model, about 60 MB, from Hugging Face. That happens once; the
+          model stays on your iPhone, and after that listening works offline. Only the download request goes out, never your video or its sound. Use Wi-Fi if
+          your data plan is tight. The demo clip comes with its transcript, so it works without the download.
+        </p>
+
+        <h3>Does BatchShoot upload my videos?</h3>
+        <p>No. Listening, cutting, captions and export all run on your iPhone. See the <a href="privacy.html">privacy policy</a> for the details.</p>
+
+        <h3>Do I have to keep the app open?</h3>
+        <p>
+          Yes, while it listens and while it exports. iOS pauses apps in the background, so if you switch away or lock the phone, the work can stop. If it stops, come back
+          and start the export again. Exports run one at a time.
+        </p>
+
+        <h3>Where do my finished videos go?</h3>
+        <p>
+          When an export finishes, tap Save. The video is written to Files › On My iPhone › BatchShoot › Exports, then the share sheet opens. Choose Save
+          Video to put it in Photos, or AirDrop, Messages or any app that accepts video. If you close the share sheet, the file is still in the Exports
+          folder. "Share or save to Photos" opens the share sheet without keeping a copy in Exports.
+        </p>
+
+        <h3>Are the takes I record in the app saved to Photos?</h3>
+        <p>
+          No. A take recorded in BatchShoot stays inside the app until you export an edit. With "Remember this batch on this device" turned on, the batch is
+          kept if the app closes; otherwise it lasts until you close the app.
+        </p>
+
+        <h3>Why do the colours look brighter than on my phone?</h3>
+        <p>
+          iPhones film in HDR by default, and an edit with captions, hook text, zoom, a mirror or a new frame can look brighter and more saturated than the original.
+          BatchShoot tells you when a recording is HDR. Compare skin tones before you post. To keep the original colours, export with captions off, no hook
+          text, the original frame, no mirror and no zoom. To film without HDR, turn off Settings › Camera › Record Video › HDR Video.
+        </p>
+
+        <h3>A caption misspells a name</h3>
+        <p>
+          Fix it once with "Fix a name across your batch", which changes it in every recording you select. For a product you film often, save a product
+          profile with its spelling corrections and apply it to the next batch.
+        </p>
+
+        <h3>What does the claims check do?</h3>
+        <p>
+          It flags lines that often get product videos pulled or need a second look, such as medical claims, guarantees, earnings promises and price offers.
+          It is a word list that runs on your iPhone, not any platform's rules and not legal advice. It never removes a line by itself; you decide.
+        </p>
+
+        <h3>The camera or microphone doesn't open</h3>
+        <p>Allow them in iOS Settings › Apps › BatchShoot, then tap Record here again. You can always choose a recording from Photos or Files instead.</p>
+      </section>
+
+      <section class="card" aria-labelledby="data">
+        <h2 id="data">Your files</h2>
+        <h3>How do I delete a video?</h3>
+        <p>Open Files › On My iPhone › BatchShoot › Exports and delete it. Copies you saved to Photos stay in Photos.</p>
+        <h3>How do I delete everything?</h3>
+        <p>
+          Delete the BatchShoot app. That removes everything it stored, including the Exports folder, so save the videos you want to keep first. We have no
+          copy and can't recover them.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© 2026 BatchShoot</p>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      </div>
+    </footer>
+  </body>
+</html>

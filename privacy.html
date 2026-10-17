@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Self-contained on purpose: no scripts, no external files, no fonts to fetch.
+      The policy below allows nothing except this page's own <style> and the data: icon.
+      Keep it in step with mobile/appstore/privacy/APP-PRIVACY.md, mobile/ios/App/App/PrivacyInfo.xcprivacy
+      and the network inventory there: every destination the iOS app can contact must be named on this page.
+      No company name appears on this page on purpose (the publisher is not confirmed yet).
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1012" media="(prefers-color-scheme: dark)" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="BatchShoot's privacy policy: no account, no ads, no analytics, no uploads. Your recordings are edited on your iPhone. The one thing it downloads, and when."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%2315171b'/%3E%3Crect%20x='8'%20y='8.5'%20width='10'%20height='4'%20rx='2'%20fill='%23fff'/%3E%3Crect%20x='8'%20y='14'%20width='14'%20height='4'%20rx='2'%20fill='%23fff'/%3E%3Crect%20x='8'%20y='19.5'%20width='16'%20height='4'%20rx='2'%20fill='%23fff'/%3E%3Ccircle%20cx='22.5'%20cy='10.5'%20r='2.75'%20fill='%23e5484d'/%3E%3C/svg%3E"
+    />
+    <title>BatchShoot privacy policy</title>
+    <style>
+      /* BatchShoot tokens, from app/globals.css (warm paper, ink-black actions, one red record dot kept for the mark).
+         The app itself is light only; these pages also follow the reader's dark setting. */
+      :root {
+        color-scheme: light;
+        --bg: #f6f5f2;
+        --surface: #ffffff;
+        --sunken: #f1efeb;
+        --line: #e5e2dc;
+        --line-strong: #d6d2ca;
+        --ink: #15171b;
+        --ink-2: #454a53;
+        --ink-3: #5b616b;
+        --link: #15171b;
+        --focus: #15171b;
+        --rec: #e5484d;
+        --logo-bg: #15171b;
+        --logo-ink: #ffffff;
+        --shadow: 0 1px 2px rgba(21, 23, 27, 0.04), 0 1px 1px rgba(21, 23, 27, 0.03);
+        --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          color-scheme: dark;
+          --bg: #0f1012;
+          --surface: #17191c;
+          --sunken: #1e2024;
+          --line: #2b2e33;
+          --line-strong: #3a3e45;
+          --ink: #f3f2ef;
+          --ink-2: #c4c7cd;
+          --ink-3: #a3a8b0;
+          --link: #f3f2ef;
+          --focus: #f3f2ef;
+          --logo-bg: #f3f2ef;
+          --logo-ink: #15171b;
+          --shadow: none;
+        }
+      }
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+        --bg: #0f1012;
+        --surface: #17191c;
+        --sunken: #1e2024;
+        --line: #2b2e33;
+        --line-strong: #3a3e45;
+        --ink: #f3f2ef;
+        --ink-2: #c4c7cd;
+        --ink-3: #a3a8b0;
+        --link: #f3f2ef;
+        --focus: #f3f2ef;
+        --logo-bg: #f3f2ef;
+        --logo-ink: #15171b;
+        --shadow: none;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--bg);
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+      }
+      a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+      a:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+      .skip {
+        position: absolute;
+        left: 16px;
+        top: -100px;
+        background: var(--surface);
+        color: var(--ink);
+        padding: 10px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        z-index: 10;
+      }
+      .skip:focus {
+        top: 12px;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      .site-header {
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .site-header .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px 16px;
+        min-height: 60px;
+        padding-top: env(safe-area-inset-top);
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        letter-spacing: -0.02em;
+      }
+      .logo__tile {
+        fill: var(--logo-bg);
+      }
+      .logo__bar {
+        fill: var(--logo-ink);
+      }
+      .logo__dot {
+        fill: var(--rec);
+      }
+      .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 4px;
+      }
+      .site-nav a,
+      .site-footer a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 10px;
+        border-radius: 8px;
+      }
+      .site-nav a[aria-current='page'] {
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: inset 0 -2px 0 var(--ink);
+        border-radius: 0;
+      }
+      main {
+        padding-top: 28px;
+        padding-bottom: 40px;
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 30px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        font-weight: 650;
+      }
+      .lede {
+        margin: 0 0 24px;
+        font-size: 18px;
+        color: var(--ink-2);
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 20px;
+        margin: 0 0 16px;
+      }
+      .card--accent {
+        border-left: 3px solid var(--ink);
+      }
+      h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        font-weight: 650;
+      }
+      h3 {
+        margin: 18px 0 6px;
+        font-size: 16px;
+        line-height: 1.3;
+        font-weight: 650;
+      }
+      p,
+      ul,
+      ol,
+      dl {
+        margin: 0 0 12px;
+      }
+      .card > :last-child {
+        margin-bottom: 0;
+      }
+      ul,
+      ol {
+        padding-left: 1.25em;
+      }
+      li + li {
+        margin-top: 6px;
+      }
+      .muted {
+        color: var(--ink-2);
+      }
+      .small {
+        font-size: 14px;
+      }
+      .mono {
+        font-family: var(--font-mono);
+        font-size: 0.92em;
+      }
+      .flows {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .flow {
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      .flow:first-child {
+        border-top: 0;
+        padding-top: 4px;
+      }
+      .flow:last-child {
+        padding-bottom: 0;
+      }
+      .flow__name {
+        margin: 0 0 6px;
+        font-weight: 650;
+      }
+      .flow__row {
+        display: grid;
+        grid-template-columns: 4.5em 1fr;
+        gap: 2px 10px;
+        margin: 0;
+      }
+      .flow__row + .flow__row {
+        margin-top: 4px;
+      }
+      .caption {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        padding-top: 0.3em;
+      }
+      .facts {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+      }
+      .facts li {
+        margin: 0;
+        background: var(--sunken);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 600;
+      }
+      .facts li::before {
+        content: '\2713\00a0';
+        color: var(--ink-2);
+      }
+      .site-footer {
+        border-top: 1px solid var(--line);
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+      }
+      .site-footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 8px;
+        padding-top: 12px;
+      }
+      .site-footer p {
+        margin: 0 10px 0 0;
+        color: var(--ink-3);
+        font-size: 14px;
+      }
+      @media (max-width: 520px) {
+        h1 {
+          font-size: 24px;
+        }
+        .lede {
+          font-size: 17px;
+        }
+        .card {
+          padding: 16px;
+        }
+        .flow__row {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media print {
+        .site-header,
+        .site-footer,
+        .skip {
+          display: none;
+        }
+        .card {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the policy</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="support.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false">
+            <rect class="logo__tile" width="32" height="32" rx="8" />
+            <rect class="logo__bar" x="8" y="8.5" width="10" height="4" rx="2" />
+            <rect class="logo__bar" x="8" y="14" width="14" height="4" rx="2" />
+            <rect class="logo__bar" x="8" y="19.5" width="16" height="4" rx="2" />
+            <circle class="logo__dot" cx="22.5" cy="10.5" r="2.75" />
+          </svg>
+          <span>BatchShoot</span>
+        </a>
+        <nav class="site-nav" aria-label="BatchShoot help pages">
+          <a href="support.html">Support</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <p class="eyebrow">Privacy policy · Last updated October 16, 2026</p>
+      <h1>Your videos stay on your iPhone</h1>
+      <p class="lede">
+        BatchShoot listens to, cuts, captions and exports your recordings on your iPhone. It has no account, no ads, no analytics and no uploads. This page
+        lists everything it keeps, and the one thing it downloads.
+      </p>
+
+      <section class="card card--accent" aria-labelledby="short">
+        <h2 id="short">In short</h2>
+        <ul class="facts">
+          <li>No account</li>
+          <li>No ads</li>
+          <li>No analytics</li>
+          <li>No tracking</li>
+          <li>No uploads</li>
+          <li>Nothing sold or shared</li>
+        </ul>
+        <p class="muted small">
+          We collect no data about you. BatchShoot has no server of its own. The only network request it makes is a one-time download of its speech model
+          from Hugging Face, described below.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="who">
+        <h2 id="who">Who we are</h2>
+        <p>
+          This policy covers the BatchShoot app for iPhone. "We" means the people who make BatchShoot. Questions about this policy go to
+          <a href="mailto:contact@universalaillc.com?subject=BatchShoot%20privacy">contact@universalaillc.com</a>.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="stays">
+        <h2 id="stays">What stays on your iPhone</h2>
+        <p>Everything below is kept inside BatchShoot's own storage on your iPhone. We have no copy of it and can't see it.</p>
+        <ul>
+          <li>
+            <strong>Your recordings.</strong> Videos you choose from Photos or Files, or record in the app. A video you choose is read where it is; BatchShoot
+            never changes the original.
+          </li>
+          <li>
+            <strong>Transcripts.</strong> The words BatchShoot heard, their timings and a loudness profile, kept per file so the same recording isn't listened
+            to twice.
+          </li>
+          <li>
+            <strong>Your edits and settings.</strong> The edit choices for each recording, caption fixes, product profiles (a product name, its spelling
+            corrections and your review reminders), your shoot-day list, and preferences such as caption style.
+          </li>
+          <li>
+            <strong>A remembered batch, only if you turn it on.</strong> With "Remember this batch on this device" on, BatchShoot keeps copies of the batch's
+            recordings, your edit choices and the last finished file for each recording, so a closed app can pick up where it left off. Turning it off
+            forgets them.
+          </li>
+          <li>
+            <strong>Finished videos.</strong> Each video you save is kept as an MP4 in Files › On My iPhone › BatchShoot › Exports. Short-lived working
+            files made during an export are removed after a day.
+          </li>
+          <li><strong>The speech model.</strong> Kept after its first download so later listening works offline.</li>
+        </ul>
+        <p class="muted small">
+          Like any app's data, these files can be included in your iPhone's own iCloud or computer backup. That backup is controlled by you and Apple, not by
+          us.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="leaves">
+        <h2 id="leaves">What leaves your iPhone, and when</h2>
+        <p>Your recordings, their sound and their transcripts never leave your iPhone unless you share them yourself.</p>
+        <ul class="flows">
+          <li class="flow">
+            <p class="flow__name">Hugging Face, for the speech model (one time)</p>
+            <p class="flow__row"><span class="caption">Where</span> <span class="mono">huggingface.co</span></p>
+            <p class="flow__row">
+              <span class="caption">What</span>
+              <span
+                >A normal download request for the files of a free, public speech model (about 60 MB). Like any download, it shows Hugging Face your IP
+                address, the app's web engine version and the files requested. It never includes your videos, sound, transcripts or anything you typed.</span
+              >
+            </p>
+            <p class="flow__row">
+              <span class="caption">When</span>
+              <span
+                >The first time BatchShoot listens to one of your recordings, and again only if iOS has cleared the saved copy. The demo clip doesn't need it.
+                Hugging Face may hand the download to its own file servers; its privacy policy applies to that request.</span
+              >
+            </p>
+          </li>
+          <li class="flow">
+            <p class="flow__name">Things you share yourself</p>
+            <p class="flow__row">
+              <span class="caption">What</span>
+              <span
+                >A finished video, or a batch report you copy or save. A report lists file names, product names and timings, so check it before you paste
+                it somewhere.</span
+              >
+            </p>
+            <p class="flow__row">
+              <span class="caption">When</span>
+              <span
+                >Only when you pick a destination in the iOS share sheet (Save Video, AirDrop, Messages, another app) or paste a copied report. The
+                destination's own privacy policy applies.</span
+              >
+            </p>
+          </li>
+          <li class="flow">
+            <p class="flow__name">Email you send us</p>
+            <p class="flow__row">
+              <span class="caption">What</span>
+              <span>Whatever you write, and your email address. The app never sends email by itself.</span>
+            </p>
+            <p class="flow__row"><span class="caption">Why</span> <span>Only to reply to you and fix the problem.</span></p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" aria-labelledby="device">
+        <h2 id="device">Camera, microphone, photos and files</h2>
+        <p>BatchShoot asks for each of these only when you do something that needs it.</p>
+        <ul>
+          <li>
+            <strong>Camera and microphone:</strong> used only while you record a take in the app (Record here, or Take Video when choosing recordings). The take
+            stays inside BatchShoot. It isn't saved to Photos unless you export it and choose Save Video.
+          </li>
+          <li>
+            <strong>Photos and Files:</strong> you pick recordings, or a music file, with the system picker. BatchShoot reads only what you choose.
+          </li>
+          <li>
+            <strong>Saving to Photos:</strong> iOS asks for permission to add videos the first time you choose Save Video in the share sheet. BatchShoot only
+            adds the video; it doesn't read your library.
+          </li>
+        </ul>
+        <p class="muted small">You can change these at any time in iOS Settings › Apps › BatchShoot.</p>
+      </section>
+
+      <section class="card" aria-labelledby="dont">
+        <h2 id="dont">What we don't do</h2>
+        <ul>
+          <li>No accounts or sign-in.</li>
+          <li>No advertising and no advertising identifiers. BatchShoot never asks to track you.</li>
+          <li>No analytics, usage tracking or crash-reporting tools.</li>
+          <li>
+            No cloud processing. Speech is turned into text on your iPhone, and the claims check is a word list that runs on your iPhone. Nothing is sent to an
+            AI service.
+          </li>
+          <li>We don't sell, rent or share data, because we don't have any.</li>
+        </ul>
+        <p class="muted small">
+          Apple's own services, such as App Store downloads and the crash reports you can choose to share with developers in iOS Settings, are run by Apple
+          under Apple's privacy policy.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="choices">
+        <h2 id="choices">Deleting your data</h2>
+        <ul>
+          <li>
+            <strong>One video:</strong> open Files › On My iPhone › BatchShoot › Exports and delete it there. Remove a recording from the batch in the app.
+          </li>
+          <li><strong>A remembered batch:</strong> turn off "Remember this batch on this device".</li>
+          <li>
+            <strong>Everything:</strong> delete the BatchShoot app. iOS removes everything it stored: recordings, transcripts, edits, settings, the speech
+            model and the Exports folder. Save any finished video you want to keep first.
+          </li>
+        </ul>
+        <p class="muted small">
+          Copies you saved to Photos, shared with other apps or kept in an earlier device backup stay where they are. We can't delete them for you, because
+          we never had them.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="kids">
+        <h2 id="kids">Children</h2>
+        <p>BatchShoot is a tool for adults who make product videos. It isn't directed to children under 13, and it collects no data from anyone.</p>
+      </section>
+
+      <section class="card" aria-labelledby="security">
+        <h2 id="security">Security</h2>
+        <p>
+          Your files are kept in BatchShoot's private storage and protected by your iPhone's own security, such as your passcode and iOS data protection. The
+          speech model download uses HTTPS.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="changes">
+        <h2 id="changes">Changes to this policy</h2>
+        <p>
+          If what BatchShoot does with data changes, we'll update this page and its date before the new version reaches the App Store. If BatchShoot ever needs
+          to collect something, the app will say so before it happens.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <p>
+          Email <a href="mailto:contact@universalaillc.com?subject=BatchShoot%20privacy">contact@universalaillc.com</a>. Please don't send us your videos or
+          personal details we didn't ask for.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© 2026 BatchShoot</p>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      </div>
+    </footer>
+  </body>
+</html>
