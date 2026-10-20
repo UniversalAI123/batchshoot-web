@@ -1,5 +1,1118 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BatchShoot</title><meta http-equiv="refresh" content="0; url=support.html">
-<style>body{font:16px/1.5 -apple-system,system-ui,sans-serif;margin:40px 16px;color:#15171b;background:#f6f4ef}@media (prefers-color-scheme:dark){body{color:#eee;background:#111}}a{color:inherit}</style></head>
-<body><p>BatchShoot: <a href="support.html">Support</a> · <a href="privacy.html">Privacy policy</a></p></body></html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      BatchShoot landing page (link-in-bio destination).
+      Self-contained on purpose, like support.html and privacy.html: no scripts, no analytics, no third-party requests.
+      Inter is served from this site (assets/fonts, SIL OFL 1.1), not from a font CDN.
+      Every claim here comes from the App Store listing copy (mobile/appstore/metadata/en-US/description.txt).
+      Change the listing first, then this page.
+
+      BETA LINK: the "Join the iPhone beta" buttons point at #beta, and the button inside #beta is the one real link.
+      Today it is an email to contact@universalaillc.com. When a public TestFlight link exists,
+      replace that one href with it (https://testflight.apple.com/join/XXXXXXXX) and update the two lines marked BETA-COPY.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1012" media="(prefers-color-scheme: dark)" />
+    <meta name="referrer" content="no-referrer" />
+    <title>BatchShoot: batch cut &amp; caption product videos on iPhone</title>
+    <meta name="description" content="Film 20 product takes, get 20 cut and captioned edits on your iPhone. Every cut explained. Nothing uploads. Now in iPhone beta." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BatchShoot" />
+    <meta property="og:title" content="BatchShoot: Film 20. Edit 20." />
+    <meta property="og:description" content="Batch cut &amp; caption product videos on your iPhone. Nothing uploads." />
+    <meta property="og:url" content="https://universalai123.github.io/batchshoot-web/" />
+    <meta property="og:image" content="https://universalai123.github.io/batchshoot-web/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BatchShoot. Film 20. Edit 20. Batch cut and caption product videos on your iPhone." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://universalai123.github.io/batchshoot-web/" />
+    <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20120'%3E%3Crect%20width='120'%20height='120'%20rx='27'%20fill='%23e5484d'/%3E%3Cg%20transform='rotate%28-14%2060%2064%29'%3E%3Crect%20x='34'%20y='26'%20width='46'%20height='72'%20rx='9'%20fill='%23b8323a'/%3E%3C/g%3E%3Cg%20transform='rotate%28-5%2060%2062%29'%3E%3Crect%20x='36'%20y='23'%20width='46'%20height='72'%20rx='9'%20fill='%23f2a3a6'/%3E%3C/g%3E%3Cg%20transform='rotate%286%2062%2058%29'%3E%3Crect%20x='40'%20y='20'%20width='48'%20height='74'%20rx='10'%20fill='%23fff'/%3E%3C/g%3E%3Cpath%20d='M58%2044%20L58%2070%20L80%2058%20Z'%20fill='%2315171b'/%3E%3C/svg%3E"
+    />
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Same tokens as support.html / privacy.html, plus the tag colours from the launch posts. */
+      :root {
+        color-scheme: light;
+        --bg: #f6f5f2;
+        --surface: #ffffff;
+        --sunken: #f1efeb;
+        --line: #e5e2dc;
+        --line-strong: #d6d2ca;
+        --ink: #15171b;
+        --ink-2: #454a53;
+        --ink-3: #5b616b;
+        --ink-4: #8a9099;
+        --rec: #e5484d;
+        --rec-text: #e5484d;
+        --btn-bg: #15171b;
+        --btn-ink: #ffffff;
+        --tile-dark: #15171b;
+        --tile-dark-ink: #ffffff;
+        --cut-bg: #fde8e8;
+        --cut-ink: #b3262c;
+        --keep-bg: #e6f4ec;
+        --keep-ink: #1b6b43;
+        --check-bg: #fff1d6;
+        --check-ink: #8a5200;
+        --strike: #a3a8b0;
+        --panel-bg: #15171b;
+        --panel-ink: #f3f2ef;
+        --panel-ink-2: #b9bdc4;
+        --shadow: 0 24px 60px rgba(21, 23, 27, 0.08), 0 1px 2px rgba(21, 23, 27, 0.04);
+        --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          color-scheme: dark;
+          --bg: #0f1012;
+          --surface: #17191c;
+          --sunken: #1e2024;
+          --line: #2b2e33;
+          --line-strong: #3a3e45;
+          --ink: #f3f2ef;
+          --ink-2: #c4c7cd;
+          --ink-3: #a3a8b0;
+          --ink-4: #7d828b;
+          --rec-text: #ff6b70;
+          --btn-bg: #f3f2ef;
+          --btn-ink: #15171b;
+          --tile-dark: #f3f2ef;
+          --tile-dark-ink: #15171b;
+          --cut-bg: #3a1a1c;
+          --cut-ink: #ff9a9d;
+          --keep-bg: #13301f;
+          --keep-ink: #7fd6a3;
+          --check-bg: #3a2a0c;
+          --check-ink: #f5c46a;
+          --strike: #6b7079;
+          --panel-bg: #1e2024;
+          --panel-ink: #f3f2ef;
+          --panel-ink-2: #b9bdc4;
+          --shadow: none;
+        }
+      }
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+        --bg: #0f1012;
+        --surface: #17191c;
+        --sunken: #1e2024;
+        --line: #2b2e33;
+        --line-strong: #3a3e45;
+        --ink: #f3f2ef;
+        --ink-2: #c4c7cd;
+        --ink-3: #a3a8b0;
+        --ink-4: #7d828b;
+        --rec-text: #ff6b70;
+        --btn-bg: #f3f2ef;
+        --btn-ink: #15171b;
+        --tile-dark: #f3f2ef;
+        --tile-dark-ink: #15171b;
+        --cut-bg: #3a1a1c;
+        --cut-ink: #ff9a9d;
+        --keep-bg: #13301f;
+        --keep-ink: #7fd6a3;
+        --check-bg: #3a2a0c;
+        --check-ink: #f5c46a;
+        --strike: #6b7079;
+        --panel-bg: #1e2024;
+        --panel-ink: #f3f2ef;
+        --panel-ink-2: #b9bdc4;
+        --shadow: none;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--bg);
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 17px;
+        line-height: 1.55;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+      a:focus-visible,
+      .btn:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 3px;
+        border-radius: 10px;
+      }
+      .skip {
+        position: absolute;
+        left: 16px;
+        top: -100px;
+        background: var(--surface);
+        color: var(--ink);
+        padding: 10px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        z-index: 10;
+      }
+      .skip:focus {
+        top: 12px;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      @media (min-width: 720px) {
+        .wrap {
+          padding-left: max(32px, env(safe-area-inset-left));
+          padding-right: max(32px, env(safe-area-inset-right));
+        }
+      }
+
+      /* Header */
+      .site-header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 68px;
+        padding-top: env(safe-area-inset-top);
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        text-decoration: none;
+        font-weight: 760;
+        font-size: 19px;
+        letter-spacing: -0.035em;
+      }
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+      .site-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 10px;
+        font-size: 15px;
+        text-decoration: none;
+        color: var(--ink-2);
+      }
+      .site-nav a:hover {
+        color: var(--ink);
+        text-decoration: underline;
+      }
+      .site-nav .btn {
+        margin-left: 6px;
+        color: var(--btn-ink);
+      }
+      .site-nav .btn:hover {
+        color: var(--btn-ink);
+        text-decoration: none;
+      }
+      @media (max-width: 479px) {
+        .site-nav .nav-text {
+          display: none;
+        }
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 22px;
+        border-radius: 999px;
+        background: var(--btn-bg);
+        color: var(--btn-ink);
+        font-weight: 650;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        text-decoration: none;
+        opacity: 0.9;
+      }
+      .btn--small {
+        min-height: 40px;
+        padding: 0 16px;
+        font-size: 14px;
+      }
+      .btn .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--rec);
+        flex: none;
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--ink);
+        box-shadow: inset 0 0 0 1.5px var(--line-strong);
+      }
+
+      /* Type */
+      .kicker {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 18px;
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .kicker::before {
+        content: '';
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--rec);
+        flex: none;
+      }
+      h1,
+      h2 {
+        margin: 0;
+        font-weight: 820;
+        letter-spacing: -0.05em;
+        line-height: 0.96;
+      }
+      h1 em,
+      h2 em {
+        font-style: normal;
+        color: var(--rec-text);
+      }
+      h1 {
+        font-size: clamp(64px, 17vw, 128px);
+        margin-bottom: 24px;
+      }
+      h2 {
+        font-size: clamp(40px, 9vw, 64px);
+        margin-bottom: 18px;
+      }
+      h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+      .sub {
+        margin: 0 0 28px;
+        font-size: clamp(19px, 4.6vw, 24px);
+        line-height: 1.35;
+        letter-spacing: -0.015em;
+        color: var(--ink-2);
+        max-width: 30em;
+      }
+      .body {
+        margin: 0 0 14px;
+        color: var(--ink-2);
+        max-width: 34em;
+      }
+      .fine {
+        font-size: 14px;
+        color: var(--ink-3);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 28px 0 64px;
+      }
+      .hero .wrap {
+        display: grid;
+        gap: 44px;
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .hero {
+          padding: 56px 0 96px;
+        }
+        .hero .wrap {
+          grid-template-columns: 1.05fr 1fr;
+          gap: 56px;
+        }
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 12px;
+        margin-bottom: 18px;
+      }
+      .meta {
+        margin: 0;
+        font-size: 14px;
+        color: var(--ink-3);
+      }
+
+      /* The 20-take grid, as on launch post 1 */
+      .takes {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: clamp(6px, 1.6vw, 12px);
+      }
+      .take {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        border-radius: clamp(8px, 2vw, 14px);
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        display: grid;
+        place-items: center;
+      }
+      .take--dark {
+        background: var(--tile-dark);
+        border-color: var(--tile-dark);
+        color: var(--tile-dark-ink);
+      }
+      .take__n {
+        position: absolute;
+        top: 8%;
+        left: 10%;
+        font-size: clamp(10px, 2.4vw, 13px);
+        font-weight: 650;
+        color: var(--ink-4);
+        font-variant-numeric: tabular-nums;
+      }
+      .take--dark .take__n {
+        color: inherit;
+      }
+      .take__play {
+        width: 26%;
+        height: 26%;
+        fill: currentColor;
+      }
+      .take__ok {
+        position: absolute;
+        right: 8%;
+        bottom: 8%;
+        width: 24%;
+        height: 24%;
+        border-radius: 50%;
+        background: var(--keep-bg);
+        display: grid;
+        place-items: center;
+      }
+      .take__ok svg {
+        width: 60%;
+        height: 60%;
+        stroke: var(--keep-ink);
+        fill: none;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .takes-caption {
+        margin: 14px 0 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--ink-3);
+      }
+
+      /* Promise strip */
+      .promises {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .promises ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (min-width: 900px) {
+        .promises ul {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+      .promises li {
+        padding: 20px 16px 20px 0;
+        font-size: 15px;
+        color: var(--ink-2);
+        line-height: 1.35;
+      }
+      .promises strong {
+        display: block;
+        color: var(--ink);
+        font-size: 17px;
+        letter-spacing: -0.02em;
+      }
+
+      /* Feature blocks */
+      .feature {
+        padding: 72px 0;
+      }
+      .feature + .feature {
+        border-top: 1px solid var(--line);
+      }
+      .feature .wrap {
+        display: grid;
+        gap: 32px;
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .feature {
+          padding: 104px 0;
+        }
+        .feature .wrap {
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+        }
+        .feature--flip .feature__text {
+          order: 2;
+        }
+      }
+      .card {
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: 8px 22px;
+      }
+      @media (min-width: 720px) {
+        .card {
+          padding: 12px 30px;
+        }
+      }
+      .card__head {
+        margin: 14px 0 4px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      .card__head::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--rec);
+      }
+      .rows {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        line-height: 1.3;
+      }
+      .rows > .row:first-child {
+        border-top: 0;
+      }
+      .row__main {
+        min-width: 0;
+      }
+      .row__note {
+        display: block;
+        margin-top: 4px;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--ink-3);
+        letter-spacing: 0;
+      }
+      .row--icon {
+        justify-content: flex-start;
+      }
+      .row--wrap {
+        flex-wrap: wrap;
+        row-gap: 10px;
+      }
+      .row--icon .tag {
+        margin-left: auto;
+      }
+      .strike {
+        color: var(--strike);
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+        text-decoration-color: var(--rec);
+        font-weight: 500;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        flex: none;
+        border-radius: 999px;
+        padding: 5px 12px;
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: 0;
+        white-space: nowrap;
+      }
+      .t-cut {
+        background: var(--cut-bg);
+        color: var(--cut-ink);
+      }
+      .t-keep {
+        background: var(--keep-bg);
+        color: var(--keep-ink);
+      }
+      .t-check {
+        background: var(--check-bg);
+        color: var(--check-ink);
+      }
+      .t-ink {
+        background: var(--btn-bg);
+        color: var(--btn-ink);
+      }
+      .t-line {
+        box-shadow: inset 0 0 0 1.5px var(--line-strong);
+        color: var(--ink);
+      }
+      .badge {
+        flex: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .badge svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .missing {
+        color: var(--cut-ink);
+      }
+      .card__foot {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+        font-size: 14px;
+        color: var(--ink-3);
+      }
+      .card__foot--plain {
+        display: block;
+        line-height: 1.45;
+      }
+      .warn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--cut-ink);
+        font-weight: 650;
+      }
+      .warn::before {
+        content: '';
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--rec);
+        flex: none;
+      }
+      .styles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .cap-sample {
+        margin: 18px 0 6px;
+        border-radius: 16px;
+        background: var(--sunken);
+        padding: 34px 16px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+      .cap-sample span {
+        display: inline-block;
+        background: #15171b;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: clamp(18px, 5vw, 22px);
+        letter-spacing: -0.02em;
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
+      .cap-sample mark {
+        background: none;
+        color: #ffd43b;
+      }
+      .fix {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 10px;
+      }
+      .arrow {
+        color: var(--ink-4);
+        font-weight: 500;
+      }
+
+      /* Also in the app + good to know */
+      .more {
+        padding: 72px 0;
+        border-top: 1px solid var(--line);
+      }
+      @media (min-width: 900px) {
+        .more {
+          padding: 96px 0;
+        }
+      }
+      .grid-2 {
+        display: grid;
+        gap: 16px;
+        margin-top: 32px;
+      }
+      @media (min-width: 900px) {
+        .grid-2 {
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+        }
+      }
+      .list-card {
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        border-radius: 24px;
+        padding: 24px 22px;
+      }
+      @media (min-width: 720px) {
+        .list-card {
+          padding: 30px;
+        }
+      }
+      .list-card ul {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .list-card li {
+        position: relative;
+        padding: 10px 0 10px 22px;
+        border-top: 1px solid var(--line);
+        color: var(--ink-2);
+        font-size: 16px;
+        line-height: 1.45;
+      }
+      .list-card li:first-child {
+        border-top: 0;
+      }
+      .list-card li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 1.05em;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--ink-4);
+      }
+
+      /* Beta */
+      .beta {
+        padding: 24px 0 72px;
+      }
+      .beta__panel {
+        background: var(--panel-bg);
+        color: var(--panel-ink);
+        border-radius: 28px;
+        padding: 40px 22px;
+        display: grid;
+        gap: 28px;
+      }
+      @media (min-width: 720px) {
+        .beta__panel {
+          padding: 56px;
+        }
+      }
+      @media (min-width: 900px) {
+        .beta__panel {
+          grid-template-columns: 1.2fr 1fr;
+          align-items: end;
+          gap: 48px;
+        }
+      }
+      .beta .kicker {
+        color: var(--panel-ink-2);
+      }
+      .beta h2 em {
+        color: #ff6b70;
+      }
+      .beta .body {
+        color: var(--panel-ink-2);
+      }
+      .beta .btn {
+        background: #ffffff;
+        color: #15171b;
+      }
+      .beta .fine {
+        color: var(--panel-ink-2);
+        margin: 14px 0 0;
+      }
+      .beta .fine a {
+        color: var(--panel-ink);
+      }
+      .beta ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .beta li {
+        padding: 12px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--panel-ink-2);
+        font-size: 16px;
+      }
+      .beta li strong {
+        color: var(--panel-ink);
+        font-weight: 650;
+      }
+
+      /* Footer */
+      .site-footer {
+        border-top: 1px solid var(--line);
+        padding: 20px 0 calc(20px + env(safe-area-inset-bottom));
+        font-size: 14px;
+        color: var(--ink-3);
+      }
+      .site-footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 4px;
+      }
+      .site-footer p {
+        margin: 0 12px 0 0;
+      }
+      .site-footer a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="BatchShoot home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="30" height="30" aria-hidden="true" focusable="false"><rect width="120" height="120" rx="27" fill="#e5484d"/><g transform="rotate(-14 60 64)"><rect x="34" y="26" width="46" height="72" rx="9" fill="#b8323a"/></g><g transform="rotate(-5 60 62)"><rect x="36" y="23" width="46" height="72" rx="9" fill="#f2a3a6"/></g><g transform="rotate(6 62 58)"><rect x="40" y="20" width="48" height="74" rx="10" fill="#fff"/></g><path d="M58 44 L58 70 L80 58 Z" fill="#15171b"/></svg>
+          <span>BatchShoot</span>
+        </a>
+        <nav class="site-nav" aria-label="Site">
+          <a class="nav-text" href="support.html">Support</a>
+          <a class="nav-text" href="privacy.html">Privacy</a>
+          <a class="btn btn--small" href="#beta">Join the beta</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div>
+            <p class="kicker">Batch editing for product videos</p>
+            <h1 id="hero-title">Film 20.<br /><em>Edit 20.</em></h1>
+            <p class="sub">Batch cut &amp; caption product videos on your iPhone. Nothing uploads.</p>
+            <div class="cta-row">
+              <a class="btn" href="#beta"><span class="dot" aria-hidden="true"></span>Join the iPhone beta</a>
+              <a class="btn btn--ghost" href="#how">See how it works</a>
+            </div>
+            <p class="meta">In beta on TestFlight. Not on the App Store yet.</p>
+          </div>
+
+          <figure style="margin: 0">
+            <ol class="takes" aria-label="A batch of 20 recordings, each cut and captioned">
+              <!-- 20 takes; 04, 11 and 18 are dark, as on launch post 1 -->
+              <li class="take"><span class="take__n">01</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">02</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">03</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take take--dark"><span class="take__n">04</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">05</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">06</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">07</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">08</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">09</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">10</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take take--dark"><span class="take__n">11</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">12</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">13</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">14</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">15</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">16</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">17</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take take--dark"><span class="take__n">18</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">19</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+              <li class="take"><span class="take__n">20</span><svg class="take__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="take__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+            </ol>
+            <figcaption class="takes-caption"><span>One goal, one caption style</span><span>20 / 20 cut &amp; captioned</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="promises" aria-label="At a glance">
+        <div class="wrap">
+          <ul>
+            <li><strong>Up to 20 takes</strong>per batch</li>
+            <li><strong>On your iPhone</strong>listen, cut, caption, export</li>
+            <li><strong>Every cut explained</strong>undo in one tap</li>
+            <li><strong>No account</strong>no ads, no tracking</li>
+          </ul>
+        </div>
+      </section>
+
+      <div id="how">
+        <!-- 1. Nothing uploads -->
+        <section class="feature" aria-labelledby="f-local">
+          <div class="wrap">
+            <div class="feature__text">
+              <p class="kicker">Nothing uploads</p>
+              <h2 id="f-local">Your takes never<br /><em>leave your phone.</em></h2>
+              <p class="body">BatchShoot listens, cuts, captions and exports on your iPhone. The speech model is built into the app, so there is no upload to stall and no server queue to wait in. Listening works without an internet connection.</p>
+              <p class="body">No account. No ads. No analytics. No tracking.</p>
+            </div>
+            <div class="card" aria-hidden="true">
+              <p class="card__head">On this iPhone</p>
+              <ul class="rows">
+                <li class="row row--icon"><span class="badge t-keep"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><span>Listen</span><span class="tag t-line">Works offline</span></li>
+                <li class="row row--icon"><span class="badge t-keep"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><span>Cut</span></li>
+                <li class="row row--icon"><span class="badge t-keep"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><span>Caption</span></li>
+                <li class="row row--icon"><span class="badge t-keep"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><span>Export MP4</span></li>
+              </ul>
+              <p class="card__foot">Upload bar: <span class="tag t-ink">none</span> Server queue: <span class="tag t-ink">none</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Film 20, edit 20 -->
+        <section class="feature feature--flip" aria-labelledby="f-batch">
+          <div class="wrap">
+            <div class="feature__text">
+              <p class="kicker">Batch editing</p>
+              <h2 id="f-batch">Add 20 takes.<br /><em>Get 20 edits.</em></h2>
+              <p class="body">Add up to 20 recordings to one batch, with one goal and one caption style. BatchShoot works through them one at a time, in the order you added them.</p>
+              <p class="body">If one recording fails, the rest keep going, and the failed one tells you why so you can try it again. When you are done, copy a batch report that lists every recording and its export.</p>
+            </div>
+            <div class="card" aria-hidden="true">
+              <p class="card__head">Batch · Product demo · Bold captions</p>
+              <ul class="rows">
+                <li class="row"><span class="row__main">Take 01</span><span class="tag t-keep">Exported</span></li>
+                <li class="row"><span class="row__main">Take 02</span><span class="tag t-keep">Exported</span></li>
+                <li class="row"><span class="row__main">Take 03<span class="row__note">Tells you why. The rest kept going.</span></span><span class="tag t-cut">Try again</span></li>
+                <li class="row"><span class="row__main">Take 04</span><span class="tag t-keep">Exported</span></li>
+                <li class="row"><span class="row__main">Take 05 → 20</span><span class="tag t-line">In order</span></li>
+              </ul>
+              <p class="card__foot"><span class="tag t-ink">Copy batch report</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Every cut, explained -->
+        <section class="feature" aria-labelledby="f-cuts">
+          <div class="wrap">
+            <div class="feature__text">
+              <p class="kicker">See every cut</p>
+              <h2 id="f-cuts">Every cut,<br /><em>explained.</em></h2>
+              <p class="body">Every edit says what it kept and what it left out. Lines are tagged when they look like a restart, filler or live-only chatter. Tap a sentence to cut it or bring it back, and Undo steps back.</p>
+              <p class="body">Said a line twice? Choose which take to keep. Protect a moment so it is never cut, and nudge a cut by a tenth of a second. The batch export waits until you have watched each edit through.</p>
+            </div>
+            <div class="card" aria-hidden="true">
+              <ul class="rows">
+                <li class="row"><span class="row__main strike">So this serum… wait, let me start over.</span><span class="tag t-cut">Restart · cut</span></li>
+                <li class="row"><span class="row__main">This serum sinks in fast and isn’t sticky.</span><span class="tag t-keep">Kept</span></li>
+                <li class="row"><span class="row__main strike">Um, so, yeah, anyway…</span><span class="tag t-cut">Filler · cut</span></li>
+                <li class="row"><span class="row__main">It sinks in really fast, not sticky at all.</span><span class="tag t-check">Said twice · pick one</span></li>
+              </ul>
+              <p class="card__foot"><span class="tag t-ink">Undo</span><span class="tag t-line">Tap a line to cut or keep it</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Captions -->
+        <section class="feature feature--flip" aria-labelledby="f-captions">
+          <div class="wrap">
+            <div class="feature__text">
+              <p class="kicker">Captions included</p>
+              <h2 id="f-captions">Misheard?<br /><em>Fix it once.</em></h2>
+              <p class="body">Captions are the transcript of what you said, burned into the video in bold, boxed or yellow, or turned off. Edit any caption line to fix a word.</p>
+              <p class="body">Fix a misheard product name once and apply it to the captions of every recording you select. Save a product profile with its spellings and reuse it next time.</p>
+            </div>
+            <div class="card" aria-hidden="true">
+              <div class="cap-sample"><span>It sinks in <mark>really fast</mark></span></div>
+              <ul class="rows">
+                <li class="row row--wrap"><span class="row__main">Caption style</span><span class="styles"><span class="tag t-ink">Bold</span><span class="tag t-line">Boxed</span><span class="tag t-line">Yellow</span><span class="tag t-line">Off</span></span></li>
+                <li class="row row--wrap"><span class="row__main fix"><span class="strike">glow sir um</span><span class="arrow">→</span><span>Glow Serum</span></span><span class="tag t-keep">Apply to selected</span></li>
+              </ul>
+              <p class="card__foot">Product profile saved with its spellings</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Will this get flagged? -->
+        <section class="feature" aria-labelledby="f-flag">
+          <div class="wrap">
+            <div class="feature__text">
+              <p class="kicker">Check before you post</p>
+              <h2 id="f-flag">Will this<br /><em>get flagged?</em></h2>
+              <p class="body">Reads what your edit will say and show, and points at lines that often need a second look in product videos: health claims, guarantees, results on a timeline, earnings, prices and codes, and “link in bio”. Each note says why and how to reword it, with a one-tap cut. You get a reminder when no disclosure was heard.</p>
+              <p class="body">It is BatchShoot’s own word list, not any platform’s rules and not legal advice. It never removes a line by itself. You decide.</p>
+            </div>
+            <div class="card" aria-hidden="true">
+              <ul class="rows">
+                <li class="row"><span class="row__main">“You’ll see results in 3 days.”<span class="row__note">Results on a timeline</span></span><span class="tag t-check">Check</span></li>
+                <li class="row"><span class="row__main">“Use my code for 20% off.”<span class="row__note">Prices and codes</span></span><span class="tag t-check">Check</span></li>
+                <li class="row"><span class="row__main">“Link in bio!”<span class="row__note">Link in bio</span></span><span class="tag t-check">Check</span></li>
+              </ul>
+              <div class="card__foot card__foot--plain">
+                <p class="warn" style="margin: 0 0 8px">No disclosure heard</p>
+                BatchShoot’s own word list. Not platform rules, not legal advice. It never cuts a line by itself.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Shoot day -->
+        <section class="feature feature--flip" aria-labelledby="f-shoot">
+          <div class="wrap">
+            <div class="feature__text">
+              <p class="kicker">Shoot day</p>
+              <h2 id="f-shoot">Did you say<br /><em>the lines?</em></h2>
+              <p class="body">List the products you are filming today and the lines every video must include. BatchShoot checks each recording against what was actually said and shows which lines are missing, so you can film them again while the product is still out.</p>
+              <p class="body">An optional teleprompter shows your lines while you record. It never appears in the video.</p>
+            </div>
+            <div class="card" aria-hidden="true">
+              <p class="card__head">Shoot day · Glow Serum · Take 04</p>
+              <ul class="rows">
+                <li class="row row--icon"><span class="badge t-keep"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><span>Say the product name</span></li>
+                <li class="row row--icon"><span class="badge t-keep"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><span>Mention it’s fragrance-free</span></li>
+                <li class="row row--icon missing"><span class="badge t-cut">!</span><span>Say the price</span><span class="tag t-cut">Missing</span></li>
+              </ul>
+              <p class="card__foot">Film it again while the product is still out.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="more" aria-labelledby="more-title">
+        <div class="wrap">
+          <p class="kicker">The details</p>
+          <h2 id="more-title">Also in the app.<br /><em>And its limits.</em></h2>
+          <div class="grid-2">
+            <div class="list-card">
+              <h3>Also in the app</h3>
+              <ul>
+                <li>Record in the app, or add takes from Photos or Files</li>
+                <li>Five goals: tighten a take, a product demo, a buyer question answer, a short pitch, or captions with nothing cut</li>
+                <li>Hook text at the top, variants with a different hook line each, and music you pick under your voice</li>
+                <li>Zoom on cuts and a mirrored picture</li>
+                <li>Save each MP4 to BatchShoot’s folder in Files, then share it to Photos, AirDrop or any app that accepts video</li>
+              </ul>
+            </div>
+            <div class="list-card">
+              <h3>Good to know</h3>
+              <ul>
+                <li>English speech only</li>
+                <li>Each recording can be up to 3 minutes, 300&nbsp;MB and 1080p. Each export can be up to 1 minute.</li>
+                <li>Keep BatchShoot open while it listens and exports. The screen stays on while a batch runs; iOS may pause the batch if you switch apps.</li>
+                <li>BatchShoot edits by what was said. It does not judge the picture, and it never makes footage: everything in your export is something you filmed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="beta" id="beta" aria-labelledby="beta-title">
+        <div class="wrap">
+          <div class="beta__panel">
+            <div>
+              <p class="kicker">iPhone beta</p>
+              <h2 id="beta-title">Join the<br /><em>iPhone beta.</em></h2>
+              <!-- BETA-COPY (1 of 2): rewrite when the button becomes a public TestFlight link -->
+              <p class="body">BatchShoot is in beta through TestFlight, Apple’s app for trying new apps before they reach the App Store. Email us and we’ll send you an invite.</p>
+              <a class="btn" href="mailto:contact@universalaillc.com?subject=BatchShoot%20iPhone%20beta&amp;body=I%27d%20like%20to%20try%20the%20BatchShoot%20iPhone%20beta.%0A%0AWhat%20I%20film%20(for%20example%20TikTok%20Shop%2C%20Amazon%2C%20UGC%20for%20brands)%3A%20%0A"><span class="dot" aria-hidden="true"></span>Email to join the beta</a>
+              <!-- BETA-COPY (2 of 2) -->
+              <p class="fine">Opens your email app, addressed to <a href="mailto:contact@universalaillc.com?subject=BatchShoot%20iPhone%20beta">contact@universalaillc.com</a>.</p>
+            </div>
+            <ul>
+              <li><strong>iPhone</strong> on iOS 26 or later</li>
+              <li><strong>English</strong> speech only</li>
+              <li><strong>Up to 20 recordings</strong> per batch, each up to 3 minutes</li>
+              <li><strong>Not on the App Store yet</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© 2026 BatchShoot</p>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      </div>
+    </footer>
+  </body>
+</html>
