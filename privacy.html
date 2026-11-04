@@ -18,7 +18,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta
       name="description"
-      content="BatchShoot's privacy policy: no account, no ads, no analytics, no uploads. Your recordings are edited on your iPhone. The speech model and engine are included in the app."
+      content="BatchShoot's privacy policy: no account, no ads, no analytics, no uploads. Your recordings are edited on your iPhone. Speech recognition runs locally; Apple may download language assets on supported builds."
     />
     <link
       rel="icon"
@@ -395,7 +395,7 @@
           <li>Nothing sold or shared</li>
         </ul>
         <p class="muted small">
-          The iPhone editor processes your recordings locally. Its speech model and engine are included in the current app build, so listening does not require a remote model download.
+          The iPhone editor processes your recordings locally. Depending on the installed build, speech uses a bundled model or Apple’s on-device engine. Apple may download English language assets on the first run; BatchShoot does not send your audio to a speech server.
         </p>
       </section>
 
@@ -432,7 +432,7 @@
             <strong>Finished videos.</strong> Each video you save is kept as an MP4 in Files › On My iPhone › BatchShoot › Exports. Short-lived working
             files made during an export are removed after a day.
           </li>
-          <li><strong>The speech model.</strong> Included with the app so listening can run locally.</li>
+          <li><strong>Speech resources.</strong> Older builds include a local model. Newer builds use Apple’s on-device model, whose language assets are managed by iOS.</li>
         </ul>
         <p class="muted small">
           Like any app's data, these files can be included in your iPhone's own iCloud or computer backup. That backup is controlled by you and Apple, not by
@@ -445,18 +445,18 @@
         <p>Your recordings, their sound and their transcripts never leave your iPhone unless you share them yourself.</p>
         <ul class="flows">
           <li class="flow">
-            <p class="flow__name">Speech model included in the app</p>
-            <p class="flow__row"><span class="caption">Where</span> <span>Inside the installed app</span></p>
+            <p class="flow__name">Local speech recognition</p>
+            <p class="flow__row"><span class="caption">Where</span> <span>On this iPhone; language assets may download from Apple</span></p>
             <p class="flow__row">
               <span class="caption">What</span>
               <span
-                >The current iPhone build bundles its speech model and engine. Listening uses those local files and does not send your recordings, sound, transcripts or typed text to a model service.</span
+                >Listening uses a bundled model or Apple’s on-device speech engine. BatchShoot does not send your recordings, sound, transcripts or typed text to a speech recognition server. Apple’s model downloads are governed by Apple’s privacy policy.</span
               >
             </p>
             <p class="flow__row">
               <span class="caption">When</span>
               <span
-                >No speech-model download is needed in the current bundled iPhone build.</span
+                >A build using Apple’s engine may need internet on its first English transcription to install language assets. Later listening uses the installed local assets. Older bundled-model builds need no model download.</span
               >
             </p>
           </li>
@@ -533,8 +533,7 @@
           </li>
           <li><strong>A remembered batch:</strong> turn off "Remember this batch on this device".</li>
           <li>
-            <strong>Everything:</strong> delete the BatchShoot app. iOS removes everything it stored: recordings, transcripts, edits, settings, the speech
-            model and the Exports folder. Save any finished video you want to keep first.
+            <strong>Everything:</strong> delete the BatchShoot app. iOS removes BatchShoot’s recordings, transcripts, edits, settings, bundled resources and Exports folder. Shared Apple speech assets may remain under iOS management. Save any finished video you want to keep first.
           </li>
         </ul>
         <p class="muted small">
@@ -551,7 +550,7 @@
       <section class="card" aria-labelledby="security">
         <h2 id="security">Security</h2>
         <p>
-          Your files are kept in BatchShoot's private storage and protected by your iPhone's own security, such as your passcode and iOS data protection. The speech model and engine are included in the installed app.
+          Your files are kept in BatchShoot's private storage and protected by your iPhone's own security, such as your passcode and iOS data protection. Speech recognition runs locally, using bundled resources or Apple’s on-device engine.
         </p>
       </section>
 
