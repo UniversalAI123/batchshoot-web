@@ -7,7 +7,7 @@
       The policy below allows nothing except this page's own <style> and the data: icon.
       Keep it in step with mobile/appstore/privacy/APP-PRIVACY.md, mobile/ios/App/App/PrivacyInfo.xcprivacy
       and the network inventory there: every destination the iOS app can contact must be named on this page.
-      No company name appears on this page on purpose (the publisher is not confirmed yet).
+      Publisher: Universal AI LLC.
     -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -482,7 +482,7 @@
           <div><dt>Formats</dt><dd>MP4, MOV, WebM</dd></div>
         </dl>
         <p>
-          A batch holds up to 20 recordings. These limits keep an export inside what an iPhone's memory can hold. If a recording is over a limit, BatchShoot
+          A batch holds up to 30 recordings, with a 1 GB total limit (2 GB when disk-backed exports are available). These limits keep an export inside what an iPhone's memory can hold. If a recording is over a limit, BatchShoot
           says which one before any work starts.
         </p>
         <h3>My recording is too long or too big</h3>
@@ -496,11 +496,10 @@
         <h3>Do I need an account?</h3>
         <p>No. There's no sign-in. Open the app and add a recording, or try the demo clip.</p>
 
-        <h3>Why does the first listen need the internet?</h3>
+        <h3>Does listening need the internet?</h3>
         <p>
-          The first time BatchShoot listens to one of your recordings, it downloads its speech model, about 60 MB, from Hugging Face. That happens once; the
-          model stays on your iPhone, and after that listening works offline. Only the download request goes out, never your video or its sound. Use Wi-Fi if
-          your data plan is tight. The demo clip comes with its transcript, so it works without the download.
+          The current iPhone build includes its speech model and engine. Listening works on your iPhone without a model download or an internet connection.
+          The demo comes with a prepared transcript; using it does not test speech-recognition accuracy.
         </p>
 
         <h3>Does BatchShoot upload my videos?</h3>
@@ -516,7 +515,8 @@
         <p>
           When an export finishes, tap Save. The video is written to Files › On My iPhone › BatchShoot › Exports, then the share sheet opens. Choose Save
           Video to put it in Photos, or AirDrop, Messages or any app that accepts video. If you close the share sheet, the file is still in the Exports
-          folder. "Share or save to Photos" opens the share sheet without keeping a copy in Exports.
+          folder. The batch export screen also offers "Save finished videos to Photos". It requests add-only Photos permission and confirms the number saved.
+          Saving is separate from rendering; check the finished videos before posting.
         </p>
 
         <h3>Are the takes I record in the app saved to Photos?</h3>

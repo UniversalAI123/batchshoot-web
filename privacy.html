@@ -7,7 +7,7 @@
       The policy below allows nothing except this page's own <style> and the data: icon.
       Keep it in step with mobile/appstore/privacy/APP-PRIVACY.md, mobile/ios/App/App/PrivacyInfo.xcprivacy
       and the network inventory there: every destination the iOS app can contact must be named on this page.
-      No company name appears on this page on purpose (the publisher is not confirmed yet).
+      Publisher: Universal AI LLC.
     -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -18,7 +18,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta
       name="description"
-      content="BatchShoot's privacy policy: no account, no ads, no analytics, no uploads. Your recordings are edited on your iPhone. The one thing it downloads, and when."
+      content="BatchShoot's privacy policy: no account, no ads, no analytics, no uploads. Your recordings are edited on your iPhone. The speech model and engine are included in the app."
     />
     <link
       rel="icon"
@@ -377,11 +377,11 @@
     </header>
 
     <main id="main" class="wrap">
-      <p class="eyebrow">Privacy policy · Last updated October 16, 2026</p>
+      <p class="eyebrow">Privacy policy · Last updated November 4, 2026</p>
       <h1>Your videos stay on your iPhone</h1>
       <p class="lede">
         BatchShoot listens to, cuts, captions and exports your recordings on your iPhone. It has no account, no ads, no analytics and no uploads. This page
-        lists everything it keeps, and the one thing it downloads.
+        describes what it keeps and the sharing actions you control.
       </p>
 
       <section class="card card--accent" aria-labelledby="short">
@@ -395,15 +395,14 @@
           <li>Nothing sold or shared</li>
         </ul>
         <p class="muted small">
-          We collect no data about you. BatchShoot has no server of its own. The only network request it makes is a one-time download of its speech model
-          from Hugging Face, described below.
+          The iPhone editor processes your recordings locally. Its speech model and engine are included in the current app build, so listening does not require a remote model download.
         </p>
       </section>
 
       <section class="card" aria-labelledby="who">
         <h2 id="who">Who we are</h2>
         <p>
-          This policy covers the BatchShoot app for iPhone. "We" means the people who make BatchShoot. Questions about this policy go to
+          This policy covers the BatchShoot app for iPhone. "We" means Universal AI LLC, the publisher of BatchShoot. Questions about this policy go to
           <a href="mailto:contact@universalaillc.com?subject=BatchShoot%20privacy">contact@universalaillc.com</a>.
         </p>
       </section>
@@ -433,7 +432,7 @@
             <strong>Finished videos.</strong> Each video you save is kept as an MP4 in Files › On My iPhone › BatchShoot › Exports. Short-lived working
             files made during an export are removed after a day.
           </li>
-          <li><strong>The speech model.</strong> Kept after its first download so later listening works offline.</li>
+          <li><strong>The speech model.</strong> Included with the app so listening can run locally.</li>
         </ul>
         <p class="muted small">
           Like any app's data, these files can be included in your iPhone's own iCloud or computer backup. That backup is controlled by you and Apple, not by
@@ -446,20 +445,18 @@
         <p>Your recordings, their sound and their transcripts never leave your iPhone unless you share them yourself.</p>
         <ul class="flows">
           <li class="flow">
-            <p class="flow__name">Hugging Face, for the speech model (one time)</p>
-            <p class="flow__row"><span class="caption">Where</span> <span class="mono">huggingface.co</span></p>
+            <p class="flow__name">Speech model included in the app</p>
+            <p class="flow__row"><span class="caption">Where</span> <span>Inside the installed app</span></p>
             <p class="flow__row">
               <span class="caption">What</span>
               <span
-                >A normal download request for the files of a free, public speech model (about 60 MB). Like any download, it shows Hugging Face your IP
-                address, the app's web engine version and the files requested. It never includes your videos, sound, transcripts or anything you typed.</span
+                >The current iPhone build bundles its speech model and engine. Listening uses those local files and does not send your recordings, sound, transcripts or typed text to a model service.</span
               >
             </p>
             <p class="flow__row">
               <span class="caption">When</span>
               <span
-                >The first time BatchShoot listens to one of your recordings, and again only if iOS has cleared the saved copy. The demo clip doesn't need it.
-                Hugging Face may hand the download to its own file servers; its privacy policy applies to that request.</span
+                >No speech-model download is needed in the current bundled iPhone build.</span
               >
             </p>
           </li>
@@ -503,7 +500,7 @@
             <strong>Photos and Files:</strong> you pick recordings, or a music file, with the system picker. BatchShoot reads only what you choose.
           </li>
           <li>
-            <strong>Saving to Photos:</strong> iOS asks for permission to add videos the first time you choose Save Video in the share sheet. BatchShoot only
+            <strong>Saving to Photos:</strong> The batch export screen requests add-only Photos permission when you choose Save finished videos to Photos. You can also save through the system share sheet. BatchShoot only
             adds the video; it doesn't read your library.
           </li>
         </ul>
@@ -554,8 +551,7 @@
       <section class="card" aria-labelledby="security">
         <h2 id="security">Security</h2>
         <p>
-          Your files are kept in BatchShoot's private storage and protected by your iPhone's own security, such as your passcode and iOS data protection. The
-          speech model download uses HTTPS.
+          Your files are kept in BatchShoot's private storage and protected by your iPhone's own security, such as your passcode and iOS data protection. The speech model and engine are included in the installed app.
         </p>
       </section>
 
