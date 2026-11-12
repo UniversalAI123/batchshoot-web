@@ -39,6 +39,8 @@
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20120'%3E%3Crect%20width='120'%20height='120'%20rx='27'%20fill='%23e5484d'/%3E%3Cg%20transform='rotate%28-14%2060%2064%29'%3E%3Crect%20x='34'%20y='26'%20width='46'%20height='72'%20rx='9'%20fill='%23b8323a'/%3E%3C/g%3E%3Cg%20transform='rotate%28-5%2060%2062%29'%3E%3Crect%20x='36'%20y='23'%20width='46'%20height='72'%20rx='9'%20fill='%23f2a3a6'/%3E%3C/g%3E%3Cg%20transform='rotate%286%2062%2058%29'%3E%3Crect%20x='40'%20y='20'%20width='48'%20height='74'%20rx='10'%20fill='%23fff'/%3E%3C/g%3E%3Cpath%20d='M58%2044%20L58%2070%20L80%2058%20Z'%20fill='%2315171b'/%3E%3C/svg%3E"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <style>
       @font-face {
         font-family: 'Inter';
@@ -1470,7 +1472,7 @@
           will-change: transform;
         }
         .hero .wrap > div > * {
-          animation: rise 0.8s var(--ease) backwards;
+          animation: arrive 0.8s var(--ease) backwards;
         }
         .hero .wrap > div > :nth-child(2) {
           animation-delay: 0.07s;
@@ -1526,12 +1528,471 @@
           }
         }
       }
+      /* ── Polish pass (November 2026) ─────────────────────────────────────────────
+         Finish and motion only: no wording, links or layout were changed. Still CSS only.
+         Everything that moves sits behind prefers-reduced-motion, and everything tied to
+         scrolling sits behind @supports, so without either the page is simply still. */
+      @property --spin {
+        syntax: '<angle>';
+        inherits: false;
+        initial-value: 0deg;
+      }
+      /* The page and its cards clip their overflow without becoming scroll containers. That keeps the
+         header pinned to the window and lets scroll-linked motion follow the page itself. */
+      @supports (overflow: clip) {
+        body {
+          overflow-x: clip;
+        }
+        .cell,
+        .promises ul,
+        .beta__panel {
+          overflow: clip;
+        }
+      }
+      html {
+        scrollbar-color: #3d3445 var(--bg);
+        scrollbar-width: thin;
+      }
+      :focus-visible {
+        outline: 2px solid var(--rec-hi);
+        outline-offset: 3px;
+      }
+      .sub,
+      .body,
+      .list-card li,
+      .beta li {
+        text-wrap: pretty;
+      }
+      a {
+        transition:
+          color 0.25s,
+          text-decoration-color 0.25s;
+      }
+
+      /* Header and footer links: a hairline that draws in from the left and leaves to the right */
+      .site-nav .nav-text,
+      .site-footer .wrap > a {
+        position: relative;
+      }
+      .site-nav .nav-text::after,
+      .site-footer .wrap > a::after {
+        content: '';
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+        height: 1px;
+        border-radius: 1px;
+        background: linear-gradient(90deg, var(--rec-hi), #ffb38a);
+        transform: scaleX(0);
+        transform-origin: right center;
+        transition: transform 0.45s var(--ease);
+        pointer-events: none;
+      }
+      .site-footer .wrap > a::after {
+        left: 8px;
+        right: 8px;
+        bottom: 11px;
+      }
+      .site-nav .nav-text:hover::after,
+      .site-nav .nav-text:focus-visible::after,
+      .site-footer .wrap > a:hover::after,
+      .site-footer .wrap > a:focus-visible::after {
+        transform: scaleX(1);
+        transform-origin: left center;
+      }
+      .brand svg {
+        transition: transform 0.5s var(--spring);
+      }
+
+      /* Buttons: the quiet one gets its own, fainter sheen; its arrow nudges */
+      .btn--ghost::after {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+      }
+      .btn--ghost svg {
+        transition: transform 0.35s var(--ease);
+      }
+
+      /* Cards: the two list cards catch their own light, like the feature cards */
+      .list-card {
+        isolation: isolate;
+        overflow: hidden;
+        overflow: clip;
+        transition:
+          transform 0.5s var(--ease),
+          border-color 0.4s;
+      }
+      .list-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(62% 52% at 100% 0%, rgba(95, 224, 168, 0.1), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .list-card--limits::before {
+        background: radial-gradient(62% 52% at 100% 0%, rgba(255, 184, 77, 0.1), transparent 70%);
+      }
+      .panel {
+        transition:
+          transform 0.5s var(--ease),
+          border-color 0.4s;
+      }
+      @media (hover: hover) {
+        .brand:hover svg {
+          transform: rotate(-8deg) scale(1.08);
+        }
+        .btn--ghost:hover svg {
+          transform: translateY(3px);
+        }
+        .list-card:hover {
+          transform: translateY(-4px);
+          border-color: var(--line-2);
+        }
+        .list-card:hover::before {
+          opacity: 1;
+        }
+        .cell:hover > .panel {
+          transform: translateY(-3px);
+          border-color: var(--line-2);
+        }
+      }
+
+      /* A second, warmer light behind the hero. Still here; it wanders where motion is welcome. */
+      .hero::after {
+        content: '';
+        display: none;
+        position: absolute;
+        z-index: -1;
+        left: 2%;
+        top: -6%;
+        width: min(58vw, 780px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        pointer-events: none;
+        background: radial-gradient(closest-side, rgba(255, 126, 96, 0.14), rgba(229, 72, 77, 0.06) 48%, transparent 72%);
+      }
+      @media (min-width: 720px) {
+        .hero::after {
+          display: block;
+        }
+        /* The two featured surfaces (the batch monitor and the beta panel) get a lit edge:
+           a conic highlight masked down to a 1px ring. Where it can turn, it turns slowly. */
+        @supports ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+          .monitor__frame::before,
+          .beta__panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            height: auto;
+            border-radius: inherit;
+            padding: 1px;
+            pointer-events: none;
+            background: conic-gradient(
+              from calc(var(--spin) - 50deg),
+              transparent 0deg,
+              rgba(255, 210, 192, 0.85) 50deg,
+              transparent 100deg,
+              transparent 180deg,
+              rgba(255, 95, 143, 0.45) 230deg,
+              transparent 280deg
+            );
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+          }
+          .monitor__frame::before {
+            inset: -1px;
+          }
+        }
+      }
+
+      @keyframes arrive {
+        from {
+          opacity: 0;
+          translate: 0 20px;
+          filter: blur(10px);
+        }
+      }
+      @keyframes drop {
+        from {
+          opacity: 0;
+          translate: 0 -10px;
+        }
+      }
+      @keyframes sheen-once {
+        from {
+          transform: translateX(-140%) skewX(-18deg);
+        }
+        to {
+          transform: translateX(380%) skewX(-18deg);
+        }
+      }
+      @keyframes wander {
+        0% {
+          transform: translate3d(-6%, -4%, 0) scale(1);
+        }
+        50% {
+          transform: translate3d(20%, 8%, 0) scale(1.14);
+        }
+        100% {
+          transform: translate3d(6%, 16%, 0) scale(0.96);
+        }
+      }
+      @keyframes breathe {
+        from {
+          opacity: 0.72;
+          transform: scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+      }
+      @keyframes glow {
+        from {
+          opacity: 0.78;
+          transform: scale(1);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+      @keyframes rec {
+        50% {
+          opacity: 0.45;
+        }
+      }
+      @keyframes spin {
+        to {
+          --spin: 360deg;
+        }
+      }
+      @keyframes progress {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+      @keyframes hair {
+        from {
+          opacity: 0.2;
+        }
+      }
+      @keyframes lift {
+        to {
+          translate: 0 -44px;
+        }
+      }
+      @keyframes sink {
+        to {
+          translate: 0 64px;
+          opacity: 0.25;
+        }
+      }
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          translate: 0 30px;
+          scale: 0.975;
+        }
+      }
+      @keyframes slide-up {
+        from {
+          translate: 0 10px;
+        }
+      }
+      @keyframes row-in {
+        from {
+          opacity: 0.2;
+          translate: 14px 0;
+        }
+      }
+      @keyframes cap-pop {
+        from {
+          opacity: 0.2;
+          scale: 0.9;
+          translate: 0 8px;
+        }
+      }
+      @keyframes scrub {
+        0% {
+          transform: translateX(0);
+          opacity: 0;
+        }
+        8%,
+        92% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        /* Arrival: the bar settles first, then the hero, top to bottom, in under a second. */
+        .site-header .brand,
+        .site-nav > a {
+          animation: drop 0.6s var(--ease) backwards;
+        }
+        .site-nav > a:nth-child(1) {
+          animation-delay: 0.05s;
+        }
+        .site-nav > a:nth-child(2) {
+          animation-delay: 0.1s;
+        }
+        .site-nav > a:nth-child(3) {
+          animation-delay: 0.15s;
+        }
+        .site-nav > a:nth-child(4) {
+          animation-delay: 0.2s;
+        }
+        .kicker--pill::before {
+          animation: rec 2.8s ease-in-out infinite;
+        }
+        @media (hover: hover) {
+          .btn:hover::after {
+            animation: sheen-once 0.85s var(--ease) both;
+          }
+        }
+        @media (min-width: 720px) {
+          .hero::after {
+            animation: wander 34s ease-in-out infinite alternate;
+            will-change: transform;
+          }
+          .monitor::before {
+            animation: breathe 9s ease-in-out infinite alternate;
+          }
+          .beta__panel::before {
+            animation: glow 11s ease-in-out infinite alternate;
+          }
+          .monitor__frame::before {
+            animation: spin 9s linear infinite;
+          }
+          .beta__panel::after {
+            animation: spin 14s linear infinite;
+          }
+        }
+        /* Tied to the page's own scroll: a progress line under the bar, and a little depth in the hero. */
+        @supports (animation-timeline: scroll()) {
+          .site-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(90deg, #ff8563, var(--rec) 55%, #ff5f8f);
+            box-shadow: 0 0 12px rgba(229, 72, 77, 0.65);
+            transform-origin: left center;
+            animation: progress linear both;
+            animation-timeline: scroll(root block);
+          }
+          .site-header::after {
+            animation: hair linear both;
+            animation-timeline: scroll(root block);
+            animation-range: 0px 160px;
+          }
+          @media (min-width: 960px) {
+            .monitor {
+              animation: lift linear both;
+              animation-timeline: scroll(root block);
+              animation-range: 0px 900px;
+            }
+            .hero::before {
+              animation: sink linear both;
+              animation-timeline: scroll(root block);
+              animation-range: 0px 900px;
+            }
+          }
+        }
+        /* Tied to each piece coming into view. */
+        @supports (animation-timeline: view()) {
+          .cell.reveal,
+          .list-card.reveal,
+          .beta__panel.reveal {
+            animation-name: rise-in;
+            animation-range: entry 0% entry 38%;
+          }
+          .promises li {
+            animation: slide-up linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 11%;
+          }
+          .promises li:nth-child(2) {
+            animation-range: entry 0% cover 14%;
+          }
+          .promises li:nth-child(3) {
+            animation-range: entry 0% cover 17%;
+          }
+          .promises li:nth-child(4) {
+            animation-range: entry 0% cover 20%;
+          }
+          @media (min-width: 900px) {
+            /* The right-hand card of each pair trails the left one. */
+            .bento > .cell--glow-left.reveal,
+            .grid-2 > .reveal:nth-child(2) {
+              animation-range: entry 12% entry 50%;
+            }
+          }
+          @media (min-width: 720px) {
+            @supports (overflow: clip) {
+              .panel .row {
+                animation: row-in linear both;
+                animation-timeline: view();
+                animation-range: entry 0% cover 16%;
+              }
+              .cap-sample span {
+                animation: cap-pop linear both;
+                animation-timeline: view();
+                animation-range: entry 0% cover 22%;
+              }
+              /* A playhead scrubs the take as the waveform passes through the window. */
+              .wave {
+                position: relative;
+              }
+              .wave::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 8px;
+                bottom: 0;
+                pointer-events: none;
+                background: linear-gradient(#fff, #fff) left center / 2px 100% no-repeat;
+                filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+                animation: scrub linear both;
+                animation-timeline: view();
+                animation-range: cover 16% cover 58%;
+              }
+            }
+          }
+        }
+      }
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
+        a,
         .btn,
+        .btn--ghost svg,
+        .brand svg,
         .cell,
+        .cell::before,
+        .panel,
+        .list-card,
+        .list-card::before,
+        .site-nav .nav-text::after,
+        .site-footer .wrap > a::after,
         .site-footer .socials a {
           transition: none;
         }
@@ -1544,10 +2005,18 @@
         body::before,
         body::after,
         .hero::before,
+        .hero::after,
         .monitor::before,
+        .monitor__frame::before,
+        .wave::after,
         .site-header,
         .float {
           display: none !important;
+        }
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
         }
         h1,
         h2,
