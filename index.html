@@ -22,16 +22,16 @@
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d0a11" />
     <meta name="referrer" content="no-referrer" />
     <title>BatchShoot: batch cut &amp; caption product videos on iPhone</title>
-    <meta name="description" content="Film 20 product takes, get 20 cut and captioned edits on your iPhone. Every cut explained. No upload needed. Now in iPhone beta." />
+    <meta name="description" content="Film 30 product takes, get 30 cut and captioned edits on your iPhone. Every cut explained. No upload needed. Now in iPhone beta." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BatchShoot" />
-    <meta property="og:title" content="BatchShoot: Film 20. Edit 20." />
+    <meta property="og:title" content="BatchShoot: Film 30. Edit 30." />
     <meta property="og:description" content="Batch cut &amp; caption product videos on your iPhone. No upload needed." />
     <meta property="og:url" content="https://universalai123.github.io/batchshoot-web/" />
     <meta property="og:image" content="https://universalai123.github.io/batchshoot-web/assets/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="BatchShoot. Film 20. Edit 20. Batch cut and caption product videos on your iPhone." />
+    <meta property="og:image:alt" content="BatchShoot. Film 30. Edit 30. Batch cut and caption product videos on your iPhone." />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://universalai123.github.io/batchshoot-web/" />
     <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -627,7 +627,7 @@
         flex: none;
       }
 
-      /* The batch monitor: 20 takes, each one arriving cut and captioned */
+      /* The batch monitor: 30 takes, each one arriving cut and captioned */
       .monitor {
         position: relative;
         margin: 0;
@@ -704,8 +704,8 @@
         margin: 0;
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: clamp(6px, 1vw, 11px);
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: clamp(5px, 0.9vw, 10px);
       }
       .clip {
         position: relative;
@@ -1619,11 +1619,11 @@
         /* The batch runs once: take by take, the cut lands, the caption burns in, the check arrives. */
         .clip {
           animation: clip-in 0.6s var(--ease) backwards;
-          animation-delay: calc(var(--i) * 0.12s + 0.7s);
+          animation-delay: calc(var(--i) * 0.08s + 0.7s);
         }
         .clip__cap {
           animation: cap-in 0.5s var(--ease) backwards;
-          animation-delay: calc(var(--i) * 0.12s + 0.9s);
+          animation-delay: calc(var(--i) * 0.08s + 0.9s);
         }
         .clip__ok {
           animation: pop 0.5s var(--spring) backwards;
@@ -2181,7 +2181,7 @@
         <div class="wrap">
           <div>
             <p class="kicker kicker--pill">Batch editing for product videos</p>
-            <h1 id="hero-title">Film 20.<br /><em>Edit 20.</em></h1>
+            <h1 id="hero-title">Film 30.<br /><em>Edit 30.</em></h1>
             <p class="sub">Batch cut &amp; caption product videos on your iPhone. No upload needed.</p>
             <div class="cta-row">
               <a class="btn" href="#beta"><span class="dot" aria-hidden="true"></span>Join the iPhone beta</a>
@@ -2194,8 +2194,8 @@
             <span class="tag t-keep float float--a" aria-hidden="true">Kept</span>
             <span class="tag t-cut float float--b" aria-hidden="true">Filler · cut</span>
             <div class="monitor__frame">
-              <p class="monitor__bar" aria-hidden="true" style="margin: 0"><span>Batch · Product demo<span class="monitor__more">&nbsp;· Bold captions</span></span><span class="monitor__count">20 / 20</span></p>
-              <ol class="takes" aria-label="A batch of 20 recordings, each cut and captioned">
+              <p class="monitor__bar" aria-hidden="true" style="margin: 0"><span>Batch · Product demo<span class="monitor__more">&nbsp;· Bold captions</span></span><span class="monitor__count">30 / 30</span></p>
+              <ol class="takes" aria-label="A batch of 30 recordings, each cut and captioned">
                 <li class="clip" style="--i:0"><span class="clip__n">01</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
                 <li class="clip" style="--i:1"><span class="clip__n">02</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
                 <li class="clip" style="--i:2"><span class="clip__n">03</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
@@ -2213,12 +2213,22 @@
                 <li class="clip" style="--i:14"><span class="clip__n">15</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
                 <li class="clip" style="--i:15"><span class="clip__n">16</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
                 <li class="clip" style="--i:16"><span class="clip__n">17</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
-                <li class="clip clip--hot" style="--i:17"><span class="clip__n">18</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:17"><span class="clip__n">18</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
                 <li class="clip" style="--i:18"><span class="clip__n">19</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
                 <li class="clip" style="--i:19"><span class="clip__n">20</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip clip--hot" style="--i:20"><span class="clip__n">21</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:21"><span class="clip__n">22</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:22"><span class="clip__n">23</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:23"><span class="clip__n">24</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:24"><span class="clip__n">25</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:25"><span class="clip__n">26</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:26"><span class="clip__n">27</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip clip--hot" style="--i:27"><span class="clip__n">28</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:28"><span class="clip__n">29</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
+                <li class="clip" style="--i:29"><span class="clip__n">30</span><svg class="clip__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><span class="clip__cap"></span><span class="clip__ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></span></li>
               </ol>
               <div class="monitor__progress" aria-hidden="true"><i></i></div>
-              <figcaption class="takes-caption"><span>One goal, one caption style</span><span>20 / 20 cut &amp; captioned</span></figcaption>
+              <figcaption class="takes-caption"><span>One goal, one caption style</span><span>30 / 30 cut &amp; captioned</span></figcaption>
             </div>
           </figure>
         </div>
@@ -2263,11 +2273,11 @@
               </div>
             </article>
 
-            <!-- 2. Film 20, edit 20 -->
+            <!-- 2. Film 30, edit 30 -->
             <article class="cell cell--7 cell--glow-left reveal" aria-labelledby="f-batch">
               <div class="cell__text">
                 <p class="kicker">Batch editing</p>
-                <h3 class="cell__title" id="f-batch">Add 20 takes. <em>Get 20 edits.</em></h3>
+                <h3 class="cell__title" id="f-batch">Add 30 takes. <em>Get 30 edits.</em></h3>
                 <p class="body">Add up to 30 recordings to one batch (1 GB in total), with one goal and one caption style. BatchShoot works through them one at a time, in the order you added them.</p>
                 <p class="body">If one recording fails, the rest keep going, and the failed one tells you why so you can try it again. When you are done, copy a batch report that lists every recording and its export.</p>
               </div>
@@ -2278,7 +2288,7 @@
                   <li class="row"><span class="row__main">Take 02</span><span class="tag t-keep">Exported</span></li>
                   <li class="row"><span class="row__main">Take 03<span class="row__note">Tells you why. The rest kept going.</span></span><span class="tag t-cut">Try again</span></li>
                   <li class="row"><span class="row__main">Take 04</span><span class="tag t-keep">Exported</span></li>
-                  <li class="row"><span class="row__main">Take 05 → 20</span><span class="tag t-line">In order</span></li>
+                  <li class="row"><span class="row__main">Take 05 → 30</span><span class="tag t-line">In order</span></li>
                 </ul>
                 <p class="panel__foot"><span class="tag t-ink">Copy batch report</span></p>
               </div>
@@ -2380,7 +2390,7 @@
                 <li>Five goals: tighten a take, a product demo, a buyer question answer, a short pitch, or captions with nothing cut</li>
                 <li>Hook text at the top, variants with a different hook line each, and music you pick under your voice</li>
                 <li>Zoom on cuts and a mirrored picture</li>
-                <li>Save each MP4 to BatchShoot’s folder in Files, then share it to Photos, AirDrop or any app that accepts video</li>
+                <li>Save each MP4 to BatchShoot’s folder in Files, then share it to Photos, AirDrop or any app that accepts video. Or save a whole batch to Photos in one tap</li>
               </ul>
             </div>
             <div class="list-card list-card--limits reveal">
